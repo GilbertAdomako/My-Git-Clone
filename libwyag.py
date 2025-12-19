@@ -123,14 +123,84 @@ def repo_create(path):
         config = repo_default_config()
         config.write(f)
 
-    return repo 
+    return repo
 
+def repo_default_config():
+    """Create default repository configuration with user profile"""
+    ret = configparser.ConfigParser()
 
-            
+    ret.add_section("core")
+    ret.set("core", "repositoryformatversion", "0")
+    ret.set("core", "filemode", "false")
+    ret.set("core", "bare", "false")
 
+    ret.add_section("user")
+    ret.set("user", "name", "Dave Jones")
+    ret.set("user", "email", "beybladee763@gmail.com")
 
+    return ret
 
-        
+# Command stub implementations
+def cmd_add(args):
+    """Add file contents to the index"""
+    print("add command not yet implemented")
 
-        
+def cmd_commit(args):
+    """Record changes to the repository"""
+    print("commit command not yet implemented")
 
+def cmd_init(args):
+    """Create an empty Git repository"""
+    repo_create(args.path)
+
+def cmd_case_file(args):
+    """Provide content of repository objects"""
+    print("cat-file command not yet implemented")
+
+def cmd_check_ignore(args):
+    """Check path(s) against ignore rules"""
+    print("check-ignore command not yet implemented")
+
+def cmd_checkout(args):
+    """Switch branches or restore working tree files"""
+    print("checkout command not yet implemented")
+
+def cmd_hash_object(args):
+    """Compute object ID and optionally creates a blob from a file"""
+    print("hash-object command not yet implemented")
+
+def cmd_log(args):
+    """Show commit logs"""
+    print("log command not yet implemented")
+
+def cmd_ls_files(args):
+    """Show information about files in the index and the working tree"""
+    print("ls-files command not yet implemented")
+
+def cmd_ls_tree(args):
+    """List the contents of a tree object"""
+    print("ls-tree command not yet implemented")
+
+def cmd_rev_parse(args):
+    """Parse revision (or other objects) identifiers"""
+    print("rev-parse command not yet implemented")
+
+def cmd_rm(args):
+    """Remove files from the working tree and from the index"""
+    print("rm command not yet implemented")
+
+def cmd_show_ref(args):
+    """List references"""
+    print("show-ref command not yet implemented")
+
+def cmd_status(args):
+    """Show the working tree status"""
+    print("status command not yet implemented")
+
+def cmd_tag(args):
+    """Create, list, delete or verify a tag object"""
+    print("tag command not yet implemented")
+
+# Argument parsers for each command
+argsp_init = argsubparsers.add_parser("init", help="Initialize a new, empty repository.")
+argsp_init.add_argument("path", metavar="directory", nargs="?", default=".", help="Where to create the repository.")
